@@ -1,12 +1,22 @@
 import React, { Component } from 'react'
 import InputTask from "./InputTask"
+import InformationTask from "./InformationTask"
+import FilterTask from "./FilterTask"
+import Tasks from "./Tasks"
 
 export default class ToDoListApp extends Component {
+
 	constructor(props){
 		super(props);
 		this.state = {
 			tasks: [],
 		}
+	}
+
+	changeState = (value) => {
+		this.setState({
+			tasks: value,
+		})
 	}
 
 	addTask = (e, description) => {
@@ -15,8 +25,8 @@ export default class ToDoListApp extends Component {
 				this.setState({
 				tasks : [...this.state.tasks, {description: description, completed: false}]
 			});
-		console.log(this.state);
 	}
+
 	render() {
 		return (
 		<div className="todoList">
@@ -29,7 +39,9 @@ export default class ToDoListApp extends Component {
 			*/}
 
 			<InputTask onSubmit={this.addTask}/>
-
+			<InformationTask tasks={this.state.tasks}/>
+			<FilterTask tasks={this.state.tasks} changeState={this.changeState}/>
+			<Tasks tasks={this.state.tasks} changeState={this.changeState}/>
 		</div>
 		)
 	}
