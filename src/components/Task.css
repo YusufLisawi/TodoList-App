@@ -1,3 +1,42 @@
-.done{
+.done {
 	text-decoration: line-through;
+	text-decoration-thickness: 2px;
+	text-decoration-color: rgb(255, 0, 0);
+}
+
+.task {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #f2eddd;
+	padding: 20px 10px;
+	margin-bottom: 5px;
+	border-radius: 10px;
+	margin-right: 5px;
+}
+.task_btns {
+	display: flex;
+	gap: 10px;
+}
+.task_btns button {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	padding: 5px;
+	border-radius: 50%;
+	transition: all linear 100ms;
+}
+.task_btns button:hover {
+	color: white;
+}
+.task_btns button:nth-child(1):hover {
+	background-color: #31ca31;
+}
+.task_btns button:nth-child(2):hover {
+	background-color: #89c9fd;
+}
+.task_btns button:nth-child(3):hover {
+	background-color: rgb(224, 79, 79);
 }

@@ -1,0 +1,21 @@
+.deletetasks {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+
+.deletetasks button {
+	background-color: #0f3d3e;
+	font-weight: 500;
+	font-size: 15px;
+	color: #fff;
+	padding: 14px;
+	border-radius: 50px;
+	border: none;
+	transition: all linear 200ms;
+	cursor: pointer;
+}
+.deletetasks button:hover {
+	background-color: #181818;
+}

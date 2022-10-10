@@ -1,0 +1,21 @@
+.filterTask {
+	margin: 15px auto;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+.filterTask button {
+	padding: 10px;
+	background-color: #0f3d3e;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 500;
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all linear 200ms;
+}
+
+.filterTask button:hover {
+	background-color: #181818;
+}

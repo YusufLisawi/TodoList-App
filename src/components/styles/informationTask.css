@@ -1,0 +1,25 @@
+.informationTask {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+.tasks__stats {
+	background-color: #3d8361;
+	padding: 10px;
+	color: #fff;
+	border-radius: 10px;
+	font-weight: 500;
+}
+.tasks__stats {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+.tasks__stats span:nth-child(1) {
+	flex: 3;
+}
+.tasks__stats span:nth-child(2) {
+	flex: 1;
+	font-size: 25px;
+}

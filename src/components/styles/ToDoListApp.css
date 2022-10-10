@@ -1,0 +1,9 @@
+.todoList {
+	width: 450px;
+	height: 550px;
+	background-color: white;
+	box-shadow: 0px 8px 25px 0px rgba(0, 0, 0, 0.1);
+	padding: 25px;
+	border-radius: 10px;
+	position: relative;
+}

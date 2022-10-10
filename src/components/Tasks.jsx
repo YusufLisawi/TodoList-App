@@ -1,24 +1,22 @@
-import React, { Component } from 'react'
-import Task from "./Task"
-
+import React, { Component } from "react";
+import Task from "./Task";
+import "./styles/Tasks.css";
 export default class Tasks extends Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			tasks: this.props.tasks,
-		}
-		this.changeState = this.props.changeState.bind(this)
-	}
 	render() {
-		console.log(this.state.tasks)
-	return (
-		<div className="tasks">
-			{
-			this.state.tasks.map((task) => (
-			<Task description={task.description} completed={task.completed}/>
-			))
-			}
-		</div>
-	)
+		return (
+			<div className="tasks">
+				{this.props.tasks.map((task) => (
+					<Task
+						id={task.id}
+						key={task.id}
+						description={task.description}
+						completed={task.completed}
+						done={this.props.done}
+						continue={this.props.continueTask}
+						delete={this.props.deleteTask}
+					/>
+				))}
+			</div>
+		);
 	}
 }

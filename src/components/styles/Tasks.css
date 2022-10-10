@@ -1,0 +1,27 @@
+.tasks {
+	padding: 7px;
+	background-color: #f6f6f6;
+	border-radius: 10px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	-ms-overflow-style: none;
+	height: 270px;
+	margin: 5px 0;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+/* scroll bar */
+.tasks::-webkit-scrollbar-thumb {
+	background: #181818;
+	border-radius: 10px;
+}
+.tasks::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+/* Track */
+.tasks::-webkit-scrollbar-track {
+	background: #e8e8e8;
+	border-radius: 10px;
+}
