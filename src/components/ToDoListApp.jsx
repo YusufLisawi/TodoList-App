@@ -2,21 +2,24 @@ import React, { Component } from "react";
 import uuid from "react-uuid";
 import InputTask from "./InputTask";
 import InformationTask from "./InformationTask";
-import FilterTask from "./FilterTask";
 import Tasks from "./Tasks";
 import DeleteTasks from "./DeleteTasks";
+import FilterTask from "./FilterTask";
 import "./styles/ToDoListApp.css";
+
 export default class ToDoListApp extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			tasks: [],
-			tasksToShow: [],
+			mode: 1,
 		};
 	}
 
 	componentDidUpdate(prevState) {
-		if (prevState.tasks !== this.state.tasks) console.log(this.state.tasks);
+		if (prevState.tasks !== this.state.tasks) {
+			console.log(this.state.tasks);
+		}
 	}
 
 	addTask = (description) => {
@@ -58,9 +61,9 @@ export default class ToDoListApp extends Component {
 		});
 	};
 
-	show = (tasks) => {
+	changeMode = (mode) => {
 		this.setState({
-			tasks: tasks,
+			mode: mode,
 		});
 	};
 
@@ -69,8 +72,12 @@ export default class ToDoListApp extends Component {
 			<div className="todoList">
 				<InputTask onInputSubmit={this.addTask} />
 				<InformationTask tasks={this.state.tasks} />
-				<FilterTask tasks={this.state.tasks} onShow={this.show} />
+				<FilterTask
+					tasks={this.state.tasks}
+					changeMode={this.changeMode}
+				/>
 				<Tasks
+					mode={this.state.mode}
 					tasks={this.state.tasks}
 					done={this.doneTask}
 					continueTask={this.continueTask}

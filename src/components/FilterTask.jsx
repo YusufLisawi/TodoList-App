@@ -1,31 +1,24 @@
 import React, { Component } from "react";
 import "./styles/filterTask.css";
 export default class FilterTask extends Component {
-	constructor(props) {
-		super(props);
-		this.tasks = this.props.tasks;
-		this.all = this.tasks;
-		this.done = this.tasks.filter((task) => task.completed);
-		this.inProgress = this.tasks.filter((task) => !task.completed);
-	}
 	render() {
 		return (
 			<div className="filterTask">
 				<button
 					className="filter__btn"
-					onClick={() => this.props.onShow(this.all)}
+					onClick={() => this.props.changeMode(1)}
 				>
-					All
+					Tous
 				</button>
 				<button
 					className="filter__btn"
-					onClick={() => this.props.onShow(this.done)}
+					onClick={() => this.props.changeMode(2)}
 				>
 					Terminer
 				</button>
 				<button
 					className="filter__btn"
-					onClick={() => this.props.onShow(this.inProgress)}
+					onClick={() => this.props.changeMode(3)}
 				>
 					En cours
 				</button>
