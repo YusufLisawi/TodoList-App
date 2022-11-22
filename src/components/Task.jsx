@@ -1,32 +1,35 @@
-import React, { Component } from "react";
+import React from "react";
 import DoneOutlinedIcon from "@mui/icons-material/DoneOutlined";
 import RotateLeftOutlinedIcon from "@mui/icons-material/RotateLeftOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import "./Task.css";
-export default class Task extends Component {
-	render() {
-		return (
-			<div className="task">
-				<h3 className={this.props.completed ? "done" : ""}>
-					{this.props.description}
-				</h3>
-				<div className="task_btns">
-					<button onClick={() => this.props.done(this.props.id)}>
-						<DoneOutlinedIcon />
-					</button>
-					<button onClick={() => this.props.continue(this.props.id)}>
-						<RotateLeftOutlinedIcon />
-					</button>
-					<button
-						onClick={() =>
-							window.confirm("Are you sure?") &&
-							this.props.delete(this.props.id)
-						}
-					>
-						<DeleteOutlineOutlinedIcon />
-					</button>
-				</div>
+import { useDispatch } from "react-redux";
+import {
+	constinueTask,
+	deleteTask,
+	doneTask,
+} from "../features/ActionsCreators";
+export default function Task({ id, description, completed }) {
+	const dispatch = useDispatch();
+	return (
+		<div className="task">
+			<h3 className={completed ? "done" : ""}>{description}</h3>
+			<div className="task_btns">
+				<button onClick={() => dispatch(doneTask(id))}>
+					<DoneOutlinedIcon />
+				</button>
+				<button onClick={() => dispatch(constinueTask(id))}>
+					<RotateLeftOutlinedIcon />
+				</button>
+				<button
+					onClick={() =>
+						window.confirm("Are you sure?") &&
+						dispatch(deleteTask(id))
+					}
+				>
+					<DeleteOutlineOutlinedIcon />
+				</button>
 			</div>
-		);
-	}
+		</div>
+	);
 }

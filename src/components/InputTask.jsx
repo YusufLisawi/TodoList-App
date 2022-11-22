@@ -1,41 +1,41 @@
-import React, { Component } from "react";
+import React, { useRef } from "react";
+import uuid from "react-uuid";
 import AddIcon from "@mui/icons-material/Add";
 import "./styles/InputTask.css";
 import "./styles/ToDoListApp.css";
 import { InputTaskStyled } from "./styles/InputTask.styled";
-export default class InputTask extends Component {
-	constructor(props) {
-		super(props);
-		this.inputRef = React.createRef();
-	}
-	render() {
-		return (
-			<InputTaskStyled>
-				<form
-					action=""
-					onSubmit={(e) => {
-						e.preventDefault();
-						if (this.inputRef.current.value !== "") {
-							this.props.onInputSubmit(
-								this.inputRef.current.value
-							);
-							this.inputRef.current.value = "";
-						}
-					}}
-				>
-					<input
-						type="text"
-						placeholder="Saisir une tache..."
-						onChange={(e) =>
-							this.setState({ description: e.target.value })
-						}
-						ref={this.inputRef}
-					/>
-					<button>
-						<AddIcon />
-					</button>
-				</form>
-			</InputTaskStyled>
-		);
-	}
+import { useDispatch } from "react-redux";
+import { addTask } from "../features/ActionsCreators";
+export default function InputTask() {
+	const dispatch = useDispatch();
+	const inputRef = useRef();
+	return (
+		<InputTaskStyled>
+			<form
+				action=""
+				onSubmit={(e) => {
+					e.preventDefault();
+					if (inputRef.current.value !== "") {
+						dispatch(
+							addTask({
+								id: uuid(),
+								description: inputRef.current.value,
+								completed: false,
+							})
+						);
+						inputRef.current.value = "";
+					}
+				}}
+			>
+				<input
+					type="text"
+					placeholder="Saisir une tache..."
+					ref={inputRef}
+				/>
+				<button>
+					<AddIcon />
+				</button>
+			</form>
+		</InputTaskStyled>
+	);
 }

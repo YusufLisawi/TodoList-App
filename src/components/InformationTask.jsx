@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./styles/informationTask.css";
 
-export default function InformationTask({ tasks }) {
+export default function InformationTask() {
+	const tasks = useSelector((state) => state.tasks);
 	return (
 		<div className="informationTask">
 			<div className="tasks__stats">
